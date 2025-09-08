@@ -10,8 +10,4 @@ package Observers;
  */
 public interface ObserverInterface {
     public void update();
-
-    public void remove(ObserverInterface observer);
-
-    public void add(ObserverInterface observer);
 }

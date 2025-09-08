@@ -27,18 +27,18 @@ public class WeatherData implements Subject{
     
     @Override
     public void registerObserver(ObserverInterface observer){
-        observer.add(observer);
-        system.out.println("observer registrado. total: " + observers.size());
+        observers.add(observer);
+        System.out.println("observer registrado. total: " + observers.size());
     }
     @Override
     public void removeObserver(ObserverInterface observer){
-        observer.remove(observer);
-        system.out.println("observer removido. total: " + observers.size());
+        observers.remove(observer);
+        System.out.println("observer removido. total: " + observers.size());
     }
     @Override
     public void notifyObserver(){
         for (ObserverInterface observer : observers){
-            observers.update();
+            observer.update();
         }
     }
     
