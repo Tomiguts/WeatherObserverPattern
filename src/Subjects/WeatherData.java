@@ -4,17 +4,17 @@
  */
 package Subjects;
 
-import Observers.ObserverInterface;
 import java.util.ArrayList;
 import java.util.List;
 import Observers.*;
+import Observers.Observer;
 
 /**
  *
  * @author Estudiantes
  */
 public class WeatherData implements Subject{
-    private List<ObserverInterface> observers;
+    private List<Observer> observers;
     private float temperature;
     private float humidity;
     private float pressure;
@@ -26,18 +26,18 @@ public class WeatherData implements Subject{
     }
     
     @Override
-    public void registerObserver(ObserverInterface observer){
+    public void registerObserver(Observer observer){
         observers.add(observer);
         System.out.println("observer registrado. total: " + observers.size());
     }
     @Override
-    public void removeObserver(ObserverInterface observer){
+    public void removeObserver(Observer observer){
         observers.remove(observer);
         System.out.println("observer removido. total: " + observers.size());
     }
     @Override
     public void notifyObserver(){
-        for (ObserverInterface observer : observers){
+        for (Observer observer : observers){
             observer.update();
         }
     }
@@ -46,6 +46,29 @@ public class WeatherData implements Subject{
         return new float[]{temperature, humidity,pressure};
     }
     
-    public void setWeather(){
+    public void setWeather(float temperature, float humidity, float pressure){
+        this.temperature = temperature;
+        this.humidity = humidity;
+        this.pressure = pressure;
+        
+        System.out.println("\n=== NUEVOS DATOS METEOROLÓGICOS ===");
+        System.out.println("Temperatura: " + temperature + "°C");
+        System.out.println("Humedad: " + humidity + "%");
+        System.out.println("Presión: " + pressure + " hPa");
+        System.out.println("===================================");
+        
+        notifyObserver();
+    }
+    
+     public float getTemperature() {
+        return temperature;
+    }
+    
+    public float getHumidity() {
+        return humidity;
+    }
+    
+    public float getPressure() {
+        return pressure;
     }
 }

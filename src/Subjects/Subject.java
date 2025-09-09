@@ -12,8 +12,8 @@ import Observers.*;
  */
 public interface Subject {
     
-    public void registerObserver(ObserverInterface observer);
-    public void removeObserver(ObserverInterface observer);
+    public void registerObserver(Observer observer);
+    public void removeObserver(Observer observer);
     public void notifyObserver();
 
 }

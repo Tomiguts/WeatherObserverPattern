@@ -8,6 +8,6 @@ package Observers;
  *
  * @author Estudiantes
  */
-public interface DisplayInterface {
+public interface Display {
     public void display();
 }
